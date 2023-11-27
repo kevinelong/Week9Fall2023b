@@ -17,13 +17,34 @@
     Network
 </body>
 <script>
+    //NEW SCHOOL "await" instead of .then() promises.
     async function logData() {
         const response = await fetch("http://jsonplaceholder.typicode.com/users/");
         const data = await response.json(); //CONVERT JSON STRING TO JS OBJECTS
-        debugger;
         document.body.innerHTML = data.map(item=>item.email); //JUST LIKE LAST TWO WEEKS
     }
     logData()
+
+    //MIDDLE SCHOOL
+    // fetch("http://jsonplaceholder.typicode.com/users/").then(
+    //     raw=>raw.json().then(
+    //         data=>{
+    //             document.body.innerHTML = data.map(item=>item.email); //JUST LIKE LAST TWO WEEKS
+    //         }
+    //     )
+    // );
+
+
+    //OLD SCHOOL
+    // function reqListener() {
+    //         const data = JSON.parse(this.responseText); //CONVERT JSON STRING TO JS OBJECTS
+    //         document.body.innerHTML = data.map(item=>item.email); //JUST LIKE LAST TWO WEEKS
+    // }
+    // const req = new XMLHttpRequest();
+    // req.addEventListener("load", reqListener);
+    // req.open("GET", "http://jsonplaceholder.typicode.com/users/");
+    // req.send();
+
 </script>
 
 </html>
