@@ -1,0 +1,30 @@
+<body>
+    <div id="target"></div>
+    <div id="output"></div>
+</body>
+<script>
+    function details(uri) {
+        fetch(uri).then(r => r.json()).then(info => {
+            target.innerHTML = `<img src="${info.sprites.front_default}">`;
+        });
+    }
+
+    function row(item) {
+        return `<tr>
+                    <td>
+                        <button onclick="details('${item.url}')">
+                            ${item.name}
+                        </button>
+                    </td>
+                </tr>`;
+    }
+
+    function draw(data) {
+        const table = document.createElement("table");
+        table.innerHTML = data.results.map(row).join("");
+        output.appendChild(table);
+    }
+
+    const uri = "https://pokeapi.co/api/v2/pokemon/";
+    fetch(uri).then(r => r.json()).then(draw);
+</script>

@@ -12,4 +12,5 @@ const real_data = [
 
 console.log(real_data)
 
-// console.log(JSON.stringify(real_data,undefined,4))
+console.log( JSON.stringify(real_data) )//not pretty
+console.log(JSON.stringify(real_data,undefined,4)) //pretty
