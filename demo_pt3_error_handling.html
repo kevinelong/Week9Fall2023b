@@ -1,0 +1,20 @@
+<body>
+    <div id="statusElement"></div>
+    <pre id="output"></pre>
+</body>
+<script>
+    function draw(data){
+        output.innerHTML = JSON.stringify(data,0,4);
+    }
+
+    const uri = "https://jsonplaceholder.typicode.com/users/9";
+    fetch(uri).then(
+        r => {
+            debugger;
+            // if(r.status >= 300){
+                statusElement.innerHTML = r.status;
+            // }
+            return r.json();
+        }
+    ).then(draw);
+</script>
